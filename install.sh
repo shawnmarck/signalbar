@@ -53,7 +53,7 @@ mkdir -p "$SIGNALBAR_DIR"
 
 # Copy files
 cp "$SCRIPT_NAME" "$SIGNALBAR_DIR/"
-cp "style.css" "$SIGNALBAR_DIR/"
+cp "signal.css" "$SIGNALBAR_DIR/"
 cp "waybar-config.jsonc" "$SIGNALBAR_DIR/"
 cp "README.md" "$SIGNALBAR_DIR/"
 
@@ -141,44 +141,21 @@ fi
 # Update CSS
 STYLE_FILE="$WAYBAR_CONFIG_DIR/style.css"
 if [ -f "$STYLE_FILE" ]; then
-    if ! grep -q "#custom-signal" "$STYLE_FILE"; then
-        echo -e "${YELLOW}Adding CSS styles to Waybar...${NC}"
-        cat >> "$STYLE_FILE" << 'EOF'
-
-/* Signal Unread Module */
-#custom-signal {
-    color: #ffffff;
-    font-size: 16px;
-    padding: 0 8px;
-    transition: color 0.3s ease;
-}
-
-#custom-signal.signal-read {
-    color: #ffffff;
-}
-
-#custom-signal.signal-unread {
-    color: #00ff00;
-    animation: flash-signal 2s infinite;
-    text-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
-}
-
-@keyframes flash-signal {
-    0%, 50% {
-        color: #00ff00;
-    }
-    25%, 75% {
-        color: #ffffff;
-    }
-}
-EOF
-        echo -e "${GREEN}CSS styles added${NC}"
+    if ! grep -q "signalbar/signal.css" "$STYLE_FILE"; then
+        echo -e "${YELLOW}Adding CSS import to Waybar...${NC}"
+        echo "" >> "$STYLE_FILE"
+        echo "/* Signal Unread Module Import */" >> "$STYLE_FILE"
+        echo "@import 'signalbar/signal.css';" >> "$STYLE_FILE"
+        echo -e "${GREEN}CSS import added${NC}"
     else
-        echo -e "${YELLOW}CSS styles already exist${NC}"
+        echo -e "${YELLOW}CSS import already exists${NC}"
     fi
 else
-    echo -e "${YELLOW}Creating new Waybar style.css...${NC}"
-    cp "$SIGNALBAR_DIR/style.css" "$STYLE_FILE"
+    echo -e "${YELLOW}Creating new Waybar style.css with import...${NC}"
+    cat > "$STYLE_FILE" << 'EOF'
+/* Signal Unread Module Import */
+@import 'signalbar/signal.css';
+EOF
 fi
 
 echo -e "${GREEN}Installation complete!${NC}"

@@ -51,33 +51,10 @@ chmod +x signal_unread.py
 }
 ```
 
-4. Add CSS to your Waybar style (`~/.config/waybar/style.css`):
+4. Add CSS import to your Waybar style (`~/.config/waybar/style.css`):
 ```css
-#custom-signal {
-    color: #ffffff;
-    font-size: 16px;
-    padding: 0 8px;
-    transition: color 0.3s ease;
-}
-
-#custom-signal.signal-read {
-    color: #ffffff;
-}
-
-#custom-signal.signal-unread {
-    color: #00ff00;
-    animation: flash-signal 2s infinite;
-    text-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
-}
-
-@keyframes flash-signal {
-    0%, 50% {
-        color: #00ff00;
-    }
-    25%, 75% {
-        color: #ffffff;
-    }
-}
+/* Signal Unread Module Import */
+@import 'signalbar/signal.css';
 ```
 
 5. Restart Waybar:

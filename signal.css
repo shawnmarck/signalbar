@@ -1,10 +1,30 @@
-/* Add this to your ~/.config/waybar/style.css */
+/* Signal Unread Module CSS */
+/* Import this file in your main Waybar style.css with: @import 'signalbar/signal.css'; */
 
 #custom-signal {
     color: #ffffff;
     font-size: 16px;
     padding: 0 8px;
     transition: color 0.3s ease;
+}
+
+#custom-signal.signal-read {
+    color: #ffffff;
+}
+
+#custom-signal.signal-unread {
+    color: #00ff00;
+    animation: flash-signal 2s infinite;
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+}
+
+@keyframes flash-signal {
+    0%, 50% {
+        color: #00ff00;
+    }
+    25%, 75% {
+        color: #ffffff;
+    }
 }
 
 #custom-signal.signal-read {
