@@ -46,7 +46,7 @@ def get_unread_count():
 
 def format_output(count):
     """Format Waybar JSON output."""
-    click_help = "\n\nLeft-click: Focus/Open Signal\nRight-click: Focus/Open Signal"
+    click_help = "\n\nClick to open Signal"
     
     if count == 0:
         return {

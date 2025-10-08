@@ -165,8 +165,7 @@ except json.JSONDecodeError as e:
 config['custom/signal'] = {
     'format': '{}',
     'exec': '$EXEC_SCRIPT',
-    'on-click': 'hyprctl dispatch focuswindow class:signal || signal-desktop &',
-    'on-click-right': 'hyprctl dispatch focuswindow class:signal || signal-desktop &',
+    'on-click': 'omarchy-launch-or-focus signal \"uwsm app -- signal-desktop\"',
     'tooltip': True,
     'return-type': 'json'
 }
@@ -225,8 +224,7 @@ elif 'modules-left' in config and isinstance(config['modules-left'], list):
 config['custom/signal'] = {
     'format': '{}',
     'exec': '$EXEC_SCRIPT',
-    'on-click': 'hyprctl dispatch focuswindow class:signal || signal-desktop &',
-    'on-click-right': 'hyprctl dispatch focuswindow class:signal || signal-desktop &',
+    'on-click': 'omarchy-launch-or-focus signal \"uwsm app -- signal-desktop\"',
     'tooltip': True,
     'return-type': 'json'
 }
