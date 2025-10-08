@@ -1,0 +1,31 @@
+/* Add this to your ~/.config/waybar/style.css */
+
+#custom-signal {
+    color: #ffffff;
+    font-size: 16px;
+    padding: 0 8px;
+    transition: color 0.3s ease;
+}
+
+#custom-signal.signal-read {
+    color: #ffffff;
+}
+
+#custom-signal.signal-unread {
+    color: #00ff00;
+    animation: flash-signal 2s infinite;
+}
+
+@keyframes flash-signal {
+    0%, 50% {
+        color: #00ff00;
+    }
+    25%, 75% {
+        color: #ffffff;
+    }
+}
+
+/* Optional: Add a subtle glow effect for unread messages */
+#custom-signal.signal-unread {
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+}

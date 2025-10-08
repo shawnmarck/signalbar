@@ -1,0 +1,14 @@
+{
+  // Add this to your ~/.config/waybar/config file
+  // Place "custom/signal" in your modules-right or modules-left array
+  
+  "custom/signal": {
+    "format": "{}",
+    "exec": "/home/techno/projects/signalbar/signal_unread.py",
+    "interval": 30,
+    "on-click": "hyprctl dispatch focuswindow class:signal-desktop || signal-desktop &",
+    "on-click-right": "signal-desktop --settings &",
+    "tooltip": true,
+    "return-type": "json"
+  }
+}
