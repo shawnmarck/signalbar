@@ -45,18 +45,20 @@ def get_unread_count():
 
 def format_output(count):
     """Format Waybar JSON output."""
+    click_help = "\n\nLeft-click: Focus/Open Signal\nRight-click: Focus/Open Signal"
+    
     if count == 0:
         return {
             "text": ICON_DEFAULT,
             "class": "signal-read",
-            "tooltip": "No unread messages in Signal"
+            "tooltip": f"No unread messages in Signal{click_help}"
         }
     else:
         text = f"{ICON_UNREAD} {count}" if count > 1 else ICON_UNREAD
         return {
             "text": text,
             "class": "signal-unread",
-            "tooltip": f"{count} unread message{'s' if count != 1 else ''} in Signal"
+            "tooltip": f"{count} unread message{'s' if count != 1 else ''} in Signal{click_help}"
         }
 
 def main():

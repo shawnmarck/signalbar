@@ -1,28 +1,30 @@
 /* Signal Unread Module CSS */
-/* Import this file in your main Waybar style.css with: @import 'signalbar/signal.css'; */
+/* Styled to match Omarchy's All Hallows Eve theme */
 
 #custom-signal {
-    color: #ffffff;
-    font-size: 16px;
-    padding: 0 8px;
+    min-width: 12px;
+    margin: 0 7.5px;
     transition: color 0.3s ease;
 }
 
 #custom-signal.signal-read {
-    color: #ffffff;
+    color: @foreground;
 }
 
 #custom-signal.signal-unread {
-    color: #00ff00;
-    animation: flash-signal 2s infinite;
-    text-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+    color: #cc7833;
+    animation: flash-signal 2s ease-in-out infinite;
+    text-shadow: 0 0 8px rgba(204, 120, 51, 0.6);
 }
 
 @keyframes flash-signal {
-    0%, 50% {
-        color: #00ff00;
+    0% {
+        color: #cc7833;
     }
-    25%, 75% {
-        color: #ffffff;
+    50% {
+        color: #9933cc;
+    }
+    100% {
+        color: #cc7833;
     }
 }
